@@ -29,26 +29,31 @@ public class MainActivity extends AppCompatActivity implements MovieClickListene
 
     // Attributes
     ActivityMainBinding binding;
-    List<Movie> movieList;
+    ArrayList<Movie> movieList;
     MovieAdapter movieAdapter;
     MovieViewModel movieViewModel;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Initial ViewBinding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Initial data ArrayList
         movieList = new ArrayList<>();
 
+        // Set up the layout design for recylcerView
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.recyclerView.setLayoutManager(layoutManager);
 
+        // Initial Adapter
         movieAdapter = new MovieAdapter(getApplicationContext(), movieList);
         binding.recyclerView.setAdapter(movieAdapter);
+        movieAdapter.setClickListener(this);
 
+        // Initial ViewModel
         movieViewModel = new ViewModelProvider(this).get(MovieViewModel.class);
 
         // Data Observes
@@ -63,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements MovieClickListene
             Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
         });
 
-
+        // Search Button
         binding.btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +83,8 @@ public class MainActivity extends AppCompatActivity implements MovieClickListene
             }
         });
 
-        movieAdapter.setClickListener(this);
+
+
 
     }
 

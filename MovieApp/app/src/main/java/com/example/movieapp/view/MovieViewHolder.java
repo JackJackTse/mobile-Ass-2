@@ -15,10 +15,10 @@ import com.example.movieapp.viewmodel.MovieViewModel;
 
 public class MovieViewHolder extends RecyclerView.ViewHolder {
 
+    // Attributes
     ImageView imageMoviePoster;
     TextView title;
     TextView year;
-//    MovieViewModel movieViewModel;
     MovieClickListener clickListener;
 
     public MovieViewHolder(@NonNull View itemView, MovieClickListener clickListener) {

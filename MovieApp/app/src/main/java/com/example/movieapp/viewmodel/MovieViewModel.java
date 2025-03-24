@@ -42,6 +42,7 @@ public class MovieViewModel extends ViewModel {
     public LiveData<String> getError() { return error; }
 
 
+    // API Call Methods
     public void searchMovies(String query) {
         String getUrl = "https://www.omdbapi.com/?apikey=2bf62933&s="+query;
 
@@ -95,7 +96,6 @@ public class MovieViewModel extends ViewModel {
             }
         });
     }
-
     public void fetchMovieDetail(String imdbID){
         String getUrl = "https://www.omdbapi.com/?apikey=2bf62933&i="+imdbID;
 
