@@ -32,6 +32,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         // Initialize ViewModel
         movieViewModel = new ViewModelProvider(this).get(MovieViewModel.class);
 
+        // Get Movie Object data from MainActivity
         Movie movie = (Movie) getIntent().getSerializableExtra("MOVIE");
         if (movie == null) {
             Toast.makeText(this, "Error loading movie", Toast.LENGTH_SHORT).show();
@@ -43,6 +44,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         movieViewModel.fetchMovieDetail(movie.getImdbID());
 
 
+        // Movie Details Data Observer
         movieViewModel.getMovieDetailsLiveData().observe(this, movieDetails -> {
             if (movieDetails != null) {
                 binding.textMovieTitle.setText(movieDetails.getTitle());
